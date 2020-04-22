@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" x:Class="SortingHat.MainPage">
+    <StackLayout>
+       <ListView x:Name="listView" ItemTapped="OnItemTapped" IsVisible="true" ItemsSource="{Binding .}"> 
+		<ListView.ItemTemplate>
+			<DataTemplate>
+				<ViewCell>
+					<ViewCell.ContextActions>
+						<MenuItem x:Name="Right_Button" Clicked="OnRightButtonClicked" CommandParameter="{Binding .}" Text="{Binding Right}" />
+						<MenuItem x:Name="Left_Button" Clicked="OnLeftButtonClicked" CommandParameter="{Binding .}" Text="{Binding Left}" />
+					</ViewCell.ContextActions>
+					<StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+						<StackLayout Padding="5,0,0,0" VerticalOptions="StartAndExpand" Orientation="Vertical">
+                            <Label x:Name="Question" Font="Large" Text="{Binding Prompt}" HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="CenterAndExpand" />
+							<Label Text="hint: swipe left for answers" VerticalTextAlignment="Center" FontSize="Small" />
+						</StackLayout>
+					</StackLayout>
+				</ViewCell>
+			</DataTemplate>
+		</ListView.ItemTemplate>
+	</ListView>
+          <Image x:Name="HouseImage" WidthRequest="256" HeightRequest="320" Margin="5,5,5,5" IsVisible="false" HorizontalOptions="Center" VerticalOptions="Center"/>
+          <Label x:Name="HouseName" Text="HOUSE" Font="Large" IsVisible="false" HorizontalOptions="Center"/>
+   </StackLayout>
+</ContentPage>
